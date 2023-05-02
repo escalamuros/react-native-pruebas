@@ -1,0 +1,17 @@
+Proyecto react-native
+(npx react-native init nombre_proyecto)
+
+npm:8.1.2
+node:16.13.2
+android studio y Android SDK Platform 33
+
+Iniciar metro:
+npx react-native start
+desde aqui: 
+*a: para levantar android
+*i: para levantar ios
+*r: para hacer un reload
+
+Iniciar app en Android(con metro):
+npx react-native run-android
+npx react-native run-ios
