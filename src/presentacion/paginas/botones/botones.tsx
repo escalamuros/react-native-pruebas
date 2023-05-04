@@ -2,37 +2,45 @@ import React, {Component} from 'react';
 import {SafeAreaView, Button, View, Text, Image} from 'react-native';
 import estilo from './estilo';
 
-class Botones extends Component {
-  private textoBoton: string;
-  private contadorCaricias: number;
+interface propsBotones {
+  maximo: number;
+}
+interface estadoBotones {
+  maullar: boolean;
+  texto: string;
+  contadorCaricias: number;
+}
+class BotonesClase extends Component<propsBotones, estadoBotones> {
   private maximoCaricias: number;
-  constructor(props: boolean) {
+  constructor(props: propsBotones) {
     super(props);
     this.state = {
       maullar: false,
+      texto: 'Acariciame!',
+      contadorCaricias: 0,
     };
-    this.textoBoton = 'Acariciame!';
-    this.contadorCaricias = 0;
-    this.maximoCaricias = 3;
+    this.maximoCaricias = this.props.maximo;
   }
 
   accionMaullar() {
-    if (this.contadorCaricias < this.maximoCaricias) {
-      this.textoBoton = 'MIAUUUU!!!';
+    if (this.state.contadorCaricias < this.maximoCaricias) {
       this.setState({
         maullar: true,
+        texto: 'MIAUUUU!!!',
+        contadorCaricias: this.state.contadorCaricias + 1,
       });
-      this.contadorCaricias++;
       setTimeout(() => {
-        this.textoBoton = 'Acariciame!';
         this.setState({
           maullar: false,
+          texto: 'Acariciame!',
+          contadorCaricias: this.state.contadorCaricias,
         });
       }, 2000);
     } else {
-      this.textoBoton = 'JJJJJJJJJJ >.<';
       this.setState({
         maullar: true,
+        texto: 'JJJJJJJJJJ >.<',
+        contadorCaricias: this.maximoCaricias,
       });
     }
   }
@@ -52,7 +60,7 @@ class Botones extends Component {
               this.accionMaullar();
             }}
             disabled={this.state.maullar}
-            title={this.textoBoton}
+            title={this.state.texto}
           />
           <Text style={estilo.cajaCentral__texto}>Soy un Gato</Text>
         </View>
@@ -61,4 +69,4 @@ class Botones extends Component {
   }
 }
 
-export default Botones;
+export default BotonesClase;

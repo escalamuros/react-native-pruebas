@@ -46,7 +46,7 @@ class App4 extends Component {
 
 class App5 extends Component {
   render(): JSX.Element {
-    return <Botones />;
+    return <Botones maximo={3} />;
   }
 }
 
