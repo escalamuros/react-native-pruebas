@@ -15,3 +15,12 @@ desde aqui:
 Iniciar app en Android(con metro):
 npx react-native run-android
 npx react-native run-ios
+
+-.-
+
+linter: chequea de la gramatica que se escribe.
+--package.json--DevDepenedecies:"eslint": "^8.19.0"
+ejecutar npx eslint init
+(seguir instaladr que edita : .eslintrc.js)
+formatter(prettier) chekeo del formato
+https://www.youtube.com/watch?v=3BHXuZvI4FI

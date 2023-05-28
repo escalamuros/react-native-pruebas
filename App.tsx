@@ -1,9 +1,14 @@
 import React, {Component} from 'react';
-import {Text, View} from 'react-native';
+import {Provider} from 'react-redux';
+import {configureStore} from '@reduxjs/toolkit';
+import Calculadora from './src/presentacion/paginas/calculadora/calculadora';
+import calculadoraSlice from './src/dominio/calculadoraSlice';
+import {SafeAreaView, StatusBar, Text, View} from 'react-native';
+
 import Splash from './src/presentacion/paginas/splash';
 import Cajas from './src/presentacion/paginas/cajas';
-import Calculadora from './src/presentacion/paginas/calculadora/calculadora';
 import Botones from './src/presentacion/paginas/botones/botones';
+
 const App1 = (): JSX.Element => {
   return (
     <View
@@ -52,8 +57,33 @@ class App5 extends Component {
 
 class App6 extends Component {
   render(): JSX.Element {
-    return <Calculadora />;
+    return (
+      <SafeAreaView style={{flex: 1}}>
+        <StatusBar backgroundColor="black" barStyle="light-content" />
+        <Calculadora />
+      </SafeAreaView>
+    );
   }
 }
 
-export default App5;
+const AppStore = configureStore({
+  reducer: {
+    calculadora: calculadoraSlice,
+  },
+});
+
+class App7 extends Component {
+  render(): JSX.Element {
+    return (
+      <Provider store={AppStore}>
+        <Calculadora />
+      </Provider>
+    );
+  }
+}
+/*
+store.getState() = obtengo la info del estado de la calculadora
+store.dispach(accion) = gatilla a que cambie el store
+*/
+
+export default App6;
