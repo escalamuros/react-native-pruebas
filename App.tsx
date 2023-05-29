@@ -8,6 +8,7 @@ import {SafeAreaView, StatusBar, Text, View} from 'react-native';
 import Splash from './src/presentacion/paginas/splash';
 import Cajas from './src/presentacion/paginas/cajas';
 import Botones from './src/presentacion/paginas/botones/botones';
+import Fcalculadora from './src/presentacion/paginas/calculadora2/fcalculadora';
 
 const App1 = (): JSX.Element => {
   return (
@@ -66,13 +67,22 @@ class App6 extends Component {
   }
 }
 
+const App7 = () => {
+  return (
+    <SafeAreaView style={{flex: 1}}>
+      <StatusBar backgroundColor="black" barStyle="light-content" />
+      <Fcalculadora />
+    </SafeAreaView>
+  );
+};
+
 const AppStore = configureStore({
   reducer: {
     calculadora: calculadoraSlice,
   },
 });
 
-class App7 extends Component {
+class App8 extends Component {
   render(): JSX.Element {
     return (
       <Provider store={AppStore}>
@@ -86,4 +96,4 @@ store.getState() = obtengo la info del estado de la calculadora
 store.dispach(accion) = gatilla a que cambie el store
 */
 
-export default App6;
+export default App7;

@@ -3,13 +3,13 @@ import {StyleSheet, View, Text} from 'react-native';
 const CajasFuncion = (): JSX.Element => {
   return (
     <View style={estilo.cajaCompleta}>
-      <View style={estilo.caja1}>
+      <View style={estilo.botonNumero}>
         <Text style={estilo.textoCentral}>A</Text>
       </View>
-      <View style={estilo.caja2}>
+      <View style={estilo.botonOperacion1}>
         <Text style={estilo.textoCentral}>B</Text>
       </View>
-      <View style={estilo.caja3}>
+      <View style={estilo.botonOperacion2}>
         <Text style={estilo.textoCentral}>C</Text>
       </View>
     </View>
@@ -19,13 +19,13 @@ class CajasClase extends Component {
   render() {
     return (
       <View style={estilo.cajaCompleta}>
-        <View style={estilo.caja1}>
+        <View style={estilo.botonNumero}>
           <Text style={estilo.textoCentral}>A</Text>
         </View>
-        <View style={estilo.caja2}>
+        <View style={estilo.botonOperacion1}>
           <Text style={estilo.textoCentral}>B</Text>
         </View>
-        <View style={estilo.caja3}>
+        <View style={estilo.botonOperacion2}>
           <Text style={estilo.textoCentral}>C</Text>
         </View>
       </View>
@@ -44,7 +44,7 @@ const estilo = StyleSheet.create({
     fontSize: 30,
     color: '#ffffff',
   },
-  caja1: {
+  botonNumero: {
     width: 100,
     height: 100,
     borderColor: '#ffffff',
@@ -53,7 +53,7 @@ const estilo = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  caja2: {
+  botonOperacion1: {
     width: 100,
     height: 100,
     borderColor: '#ffffff',
@@ -62,7 +62,7 @@ const estilo = StyleSheet.create({
     justifyContent: 'flex-end',
     alignItems: 'flex-start',
   },
-  caja3: {
+  botonOperacion2: {
     width: 100,
     height: 100,
     borderColor: '#ffffff',

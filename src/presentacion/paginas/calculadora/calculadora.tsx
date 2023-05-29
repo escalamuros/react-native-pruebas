@@ -15,11 +15,10 @@ class Calculadora extends Component<PropsCalculadora, OutputCalculadora> {
   }
 
   calcular(valor: string): void {
-    console.log(valor);
     switch (valor) {
       case 'del':
         let largo = 1;
-        if (this.state.numeroUno.slice(0, 1) == '-') {
+        if (this.state.numeroUno.slice(0, 1) === '-') {
           largo = 2;
         }
         if (this.state.numeroUno.length > largo) {
@@ -48,10 +47,10 @@ class Calculadora extends Component<PropsCalculadora, OutputCalculadora> {
         break;
       case 'signo':
         let num = this.state.numeroUno;
-        if (num == '0') {
+        if (num === '0') {
           //no hace nada
         } else {
-          if (num.slice(0, 1) == '-') {
+          if (num.slice(0, 1) === '-') {
             num = num.substring(1);
           } else {
             num = '-' + num;
@@ -64,14 +63,14 @@ class Calculadora extends Component<PropsCalculadora, OutputCalculadora> {
         }
         break;
       case 'suma':
-        if (this.state.numeroDos == '0') {
+        if (this.state.numeroDos === '0') {
           this.setState({
             numeroDos: this.state.numeroUno,
             numeroUno: '0',
             operar: '+',
           });
         } else {
-          if (this.state.operar == '') {
+          if (this.state.operar === '') {
             this.setState({
               numeroDos: this.state.numeroDos,
               numeroUno: this.state.numeroUno,
@@ -83,14 +82,14 @@ class Calculadora extends Component<PropsCalculadora, OutputCalculadora> {
         }
         break;
       case 'resta':
-        if (this.state.numeroDos == '0') {
+        if (this.state.numeroDos === '0') {
           this.setState({
             numeroDos: this.state.numeroUno,
             numeroUno: '0',
             operar: '-',
           });
         } else {
-          if (this.state.operar == '') {
+          if (this.state.operar === '') {
             this.setState({
               numeroDos: this.state.numeroDos,
               numeroUno: this.state.numeroUno,
@@ -113,14 +112,14 @@ class Calculadora extends Component<PropsCalculadora, OutputCalculadora> {
         });
         break;
       case 'multiplica':
-        if (this.state.numeroDos == '0') {
+        if (this.state.numeroDos === '0') {
           this.setState({
             numeroDos: this.state.numeroUno,
             numeroUno: '0',
             operar: '*',
           });
         } else {
-          if (this.state.operar == '') {
+          if (this.state.operar === '') {
             this.setState({
               numeroDos: this.state.numeroDos,
               numeroUno: this.state.numeroUno,
@@ -132,14 +131,14 @@ class Calculadora extends Component<PropsCalculadora, OutputCalculadora> {
         }
         break;
       case 'divide':
-        if (this.state.numeroDos == '0') {
+        if (this.state.numeroDos === '0') {
           this.setState({
             numeroDos: this.state.numeroUno,
             numeroUno: '0',
             operar: '/',
           });
         } else {
-          if (this.state.operar == '') {
+          if (this.state.operar === '') {
             this.setState({
               numeroDos: this.state.numeroDos,
               numeroUno: this.state.numeroUno,
@@ -166,14 +165,14 @@ class Calculadora extends Component<PropsCalculadora, OutputCalculadora> {
         }
         break;
       case 'porcentaje':
-        if (this.state.numeroDos == '0') {
+        if (this.state.numeroDos === '0') {
           this.setState({
             numeroDos: this.state.numeroUno,
             numeroUno: '0',
             operar: '%',
           });
         } else {
-          if (this.state.operar == '') {
+          if (this.state.operar === '') {
             this.setState({
               numeroDos: this.state.numeroDos,
               numeroUno: this.state.numeroUno,
@@ -198,7 +197,7 @@ class Calculadora extends Component<PropsCalculadora, OutputCalculadora> {
         }
         break;
       case 'igual':
-        if (this.state.numeroDos == '0' || this.state.operar == '') {
+        if (this.state.numeroDos === '0' || this.state.operar === '') {
           //no hace nada
         } else {
           this.realizarOperacionActualY('');
@@ -246,16 +245,16 @@ class Calculadora extends Component<PropsCalculadora, OutputCalculadora> {
   quitarCerosFinales(numero: string): string {
     if (numero.includes(',')) {
       for (let i = numero.length - 1; i >= 0; i--) {
-        if (numero[i] == '0') {
+        if (numero[i] === '0') {
           numero = numero.substring(0, numero.length - 1);
-        } else if (numero[i] == ',') {
+        } else if (numero[i] === ',') {
           numero = numero.substring(0, numero.length - 1);
           break;
         } else {
           break;
         }
       }
-      if (numero == '') {
+      if (numero === '') {
         numero = '0';
       }
       return numero;
@@ -280,13 +279,13 @@ class Calculadora extends Component<PropsCalculadora, OutputCalculadora> {
   digitarNumero(numero: string): void {
     let num;
     num = this.state.numeroUno;
-    if (num == '0' && (numero == '0' || numero == 'doble')) {
+    if (num === '0' && (numero === '0' || numero === 'doble')) {
       //no hacer nada
     } else {
-      if (num == '0') {
+      if (num === '0') {
         num = '';
       }
-      if (numero == 'doble') {
+      if (numero === 'doble') {
         num = num + '00';
       } else {
         num = num + numero;
@@ -309,128 +308,128 @@ class Calculadora extends Component<PropsCalculadora, OutputCalculadora> {
         <View style={estilo.teclado}>
           <View style={estilo.linea}>
             <TouchableOpacity onPress={() => this.digitarNumero('7')}>
-              <View style={estilo.caja1}>
+              <View style={estilo.botonNumero}>
                 <Text style={estilo.textoBoton}>7</Text>
               </View>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => this.digitarNumero('8')}>
-              <View style={estilo.caja1}>
+              <View style={estilo.botonNumero}>
                 <Text style={estilo.textoBoton}>8</Text>
               </View>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => this.digitarNumero('9')}>
-              <View style={estilo.caja1}>
+              <View style={estilo.botonNumero}>
                 <Text style={estilo.textoBoton}>9</Text>
               </View>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => this.calcular('signo')}>
-              <View style={estilo.caja2}>
+              <View style={estilo.botonOperacion1}>
                 <Text style={estilo.textoBoton}>±</Text>
               </View>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => this.calcular('del')}>
-              <View style={estilo.caja2}>
-                <Text style={estilo.textoBoton}>»</Text>
+              <View style={estilo.botonOperacion1}>
+                <Text style={estilo.textoBotonChico}>Borra</Text>
               </View>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => this.calcular('delTodo')}>
-              <View style={estilo.caja2}>
-                <Text style={estilo.textoBoton}>Φ</Text>
+              <View style={estilo.botonOperacion1}>
+                <Text style={estilo.textoBotonChico}>Limpia</Text>
               </View>
             </TouchableOpacity>
           </View>
           <View style={estilo.linea}>
             <TouchableOpacity onPress={() => this.digitarNumero('4')}>
-              <View style={estilo.caja1}>
+              <View style={estilo.botonNumero}>
                 <Text style={estilo.textoBoton}>4</Text>
               </View>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => this.digitarNumero('5')}>
-              <View style={estilo.caja1}>
+              <View style={estilo.botonNumero}>
                 <Text style={estilo.textoBoton}>5</Text>
               </View>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => this.digitarNumero('6')}>
-              <View style={estilo.caja1}>
+              <View style={estilo.botonNumero}>
                 <Text style={estilo.textoBoton}>6</Text>
               </View>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => this.calcular('suma')}>
-              <View style={estilo.caja3}>
-                <Text style={estilo.textoBoton}>+</Text>
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => this.calcular('resta')}>
-              <View style={estilo.caja3}>
-                <Text style={estilo.textoBoton}>-</Text>
-              </View>
-            </TouchableOpacity>
             <TouchableOpacity onPress={() => this.calcular('cuadrado')}>
-              <View style={estilo.caja3}>
-                <Text style={estilo.textoBoton}>²</Text>
+              <View style={estilo.botonOperacion1}>
+                <Text style={estilo.textoBotonChico}>x²</Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => this.calcular('raiz')}>
+              <View style={estilo.botonOperacion1}>
+                <Text style={estilo.textoBotonChico}>√x</Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => this.calcular('entero')}>
+              <View style={estilo.botonOperacion1}>
+                <Text style={estilo.textoBotonChico}>|x|</Text>
               </View>
             </TouchableOpacity>
           </View>
           <View style={estilo.linea}>
             <TouchableOpacity onPress={() => this.digitarNumero('1')}>
-              <View style={estilo.caja1}>
+              <View style={estilo.botonNumero}>
                 <Text style={estilo.textoBoton}>1</Text>
               </View>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => this.digitarNumero('2')}>
-              <View style={estilo.caja1}>
+              <View style={estilo.botonNumero}>
                 <Text style={estilo.textoBoton}>2</Text>
               </View>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => this.digitarNumero('3')}>
-              <View style={estilo.caja1}>
+              <View style={estilo.botonNumero}>
                 <Text style={estilo.textoBoton}>3</Text>
               </View>
             </TouchableOpacity>
+            <TouchableOpacity onPress={() => this.calcular('suma')}>
+              <View style={estilo.botonOperacion2}>
+                <Text style={estilo.textoBoton}>+</Text>
+              </View>
+            </TouchableOpacity>
             <TouchableOpacity onPress={() => this.calcular('multiplica')}>
-              <View style={estilo.caja3}>
+              <View style={estilo.botonOperacion2}>
                 <Text style={estilo.textoBoton}>*</Text>
               </View>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => this.calcular('divide')}>
-              <View style={estilo.caja3}>
-                <Text style={estilo.textoBoton}>/</Text>
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => this.calcular('raiz')}>
-              <View style={estilo.caja3}>
-                <Text style={estilo.textoBoton}>√</Text>
+            <TouchableOpacity onPress={() => this.calcular('porcentaje')}>
+              <View style={estilo.botonOperacion2}>
+                <Text style={estilo.textoBoton}>%</Text>
               </View>
             </TouchableOpacity>
           </View>
           <View style={estilo.linea}>
             <TouchableOpacity onPress={() => this.digitarNumero('0')}>
-              <View style={estilo.caja1}>
+              <View style={estilo.botonNumero}>
                 <Text style={estilo.textoBoton}>0</Text>
               </View>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => this.digitarNumero('doble')}>
-              <View style={estilo.caja1}>
+              <View style={estilo.botonNumero}>
                 <Text style={estilo.textoBoton}>00</Text>
               </View>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => this.digitarComa()}>
-              <View style={estilo.caja1}>
+              <View style={estilo.botonNumero}>
                 <Text style={estilo.textoBoton}>,</Text>
               </View>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => this.calcular('porcentaje')}>
-              <View style={estilo.caja3}>
-                <Text style={estilo.textoBoton}>%</Text>
+            <TouchableOpacity onPress={() => this.calcular('resta')}>
+              <View style={estilo.botonOperacion2}>
+                <Text style={estilo.textoBoton}>-</Text>
               </View>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => this.calcular('entero')}>
-              <View style={estilo.caja3}>
-                <Text style={estilo.textoBoton}>Ϡ</Text>
+            <TouchableOpacity onPress={() => this.calcular('divide')}>
+              <View style={estilo.botonOperacion2}>
+                <Text style={estilo.textoBoton}>/</Text>
               </View>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => this.calcular('igual')}>
-              <View style={estilo.caja3}>
+              <View style={estilo.botonOperacion2}>
                 <Text style={estilo.textoBoton}>=</Text>
               </View>
             </TouchableOpacity>
